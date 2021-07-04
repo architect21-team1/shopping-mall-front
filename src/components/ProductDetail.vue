@@ -22,26 +22,18 @@
         </b-col>
       </b-row>
       <hr/>
-<!--      <Recommendations />-->
-<!--      <Ad :categories="product.categories" />-->
     </b-container>
   </div>
 </template>
 
 <script>
-// import Ad from '@/components/Ad.vue'
-// import Recommendations from '@/components/Recommendations.vue'
 import {mapGetters, mapActions} from 'vuex'
 
 export default {
   name: 'ProductDetail',
-  // components: {
-  //   Recommendations,
-  //   Ad
-  // },
   props: {
     id: {
-      type: String,
+      type: String || Number,
       required: true
     }
   },
@@ -74,12 +66,14 @@ export default {
     //   // await this.$router.push("/cart")
     // },
     async order() {
-      await this.orderProduct({
+      const order = await this.orderProduct({
         productId: this.product.id,
         quantity: this.quantity,
         value: this.product.price,
         status: 'NEW',
       });
+      console.log(order);
+      this.$router.push(`/order`);
     }
   }
 }
