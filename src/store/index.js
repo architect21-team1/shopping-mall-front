@@ -1,11 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import ad from '@/store/modules/ad'
-import cart from '@/store/modules/cart'
-import currency from '@/store/modules/currency'
 import order from '@/store/modules/order'
+import refund from '@/store/modules/refund'
 import product from '@/store/modules/product'
-import recommendation from '@/store/modules/recommendation'
 
 Vue.use(Vuex)
 
@@ -18,11 +15,8 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    ad,
-    cart,
-    currency,
     order,
+    refund,
     product,
-    recommendation
   }
 })

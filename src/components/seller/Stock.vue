@@ -1,11 +1,7 @@
 <template>
-  <div class="seller-product">
-    <button>Add</button>
-    <div v-for="(product, index) in products" :key="index">
-      {{product}}
-      <button>Delete</button>
-    </div>
-  </div>
+  <b-container>
+    <b-table striped hover :items="products"></b-table>
+  </b-container>
 </template>
 
 <script>

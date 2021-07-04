@@ -17,7 +17,7 @@ export default {
         },
         async orderProduct(context, order) {
             const res = await axios.post(process.env.VUE_APP_ORDER_BASE_URL + "/api/orders", order);
-            console.log(res);
+            context.commit('setOrder', res.data);
         }
     },
     mutations: {

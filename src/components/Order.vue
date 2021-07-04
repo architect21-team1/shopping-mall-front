@@ -5,14 +5,11 @@
         <b-col>
           <h3>Your order is complete!</h3>
           <p>
-            Order Comfirmation ID: <strong>{{order.orderId}}</strong>
+            Order Comfirmation ID: <strong>{{order.id}}</strong>
             <br/>
-            Shipping Tracking ID: <strong>{{order.shippingTrackingId}}</strong>
           </p>
           <p>
-            Shipping Cost: <strong>{{ renderMoney(order.shippingCost)}}</strong>
-            <br/>
-            Total Paid: <strong>{{ renderMoney(order.totalPaid) }}</strong>
+            Total Paid: <strong>{{ order.value }}</strong>
           </p>
           <router-link to="/">
             <b-button variant="primary">Browse other products &rarr;</b-button>
@@ -20,23 +17,17 @@
         </b-col>
       </b-row>
       <hr/>
-      <Recommendations/>
     </b-container>
   </div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
-import Recommendations from '@/components/Recommendations.vue'
 
 export default {
   name: 'Order',
-  components: {
-    Recommendations
-  },
   computed: mapGetters({
     order: 'order/orderResult',
-    renderMoney: 'currency/renderMoney'
   })
 }
 </script>

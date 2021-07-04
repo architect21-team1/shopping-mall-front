@@ -22,32 +22,24 @@
         </b-col>
       </b-row>
       <hr/>
-<!--      <Recommendations />-->
-<!--      <Ad :categories="product.categories" />-->
     </b-container>
   </div>
 </template>
 
 <script>
-// import Ad from '@/components/Ad.vue'
-// import Recommendations from '@/components/Recommendations.vue'
 import {mapGetters, mapActions} from 'vuex'
 
 export default {
   name: 'ProductDetail',
-  // components: {
-  //   Recommendations,
-  //   Ad
-  // },
   props: {
     id: {
-      type: String,
+      type: String || Number,
       required: true
     }
   },
   computed: mapGetters({
-    renderMoney: 'currency/renderMoney',
-    product: 'product/product'
+    product: 'product/product',
+    orderResult: 'order/orderResult'
   }),
   mounted() {
     this.fetchProduct(this.$props.id)
@@ -80,6 +72,7 @@ export default {
         value: this.product.price,
         status: 'NEW',
       });
+      this.$router.push(`/order/${this.orderResult.id}/complete`);
     }
   }
 }
