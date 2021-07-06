@@ -15,8 +15,8 @@ export default {
             const res = await axios.get(process.env.VUE_APP_REFUND_BASE_URL + "/api/refunds");
             context.commit('setRefunds', res.data);
         },
-        async orderProduct(context, refund) {
-            const res = await axios.post(process.env.VUE_APP_REFUND_BASE_URL + "/api/refunds", refund);
+        async refund(context, order) {
+            const res = await axios.post(process.env.VUE_APP_REFUND_BASE_URL + "/api/refunds", order);
             context.commit('setRefund', res.data);
         }
     },

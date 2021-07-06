@@ -16,7 +16,7 @@
       <b-col>{{ order.value }}</b-col>
       <b-col>{{ order.status }}</b-col>
       <b-col>
-        <button>취소</button>
+        <button @click="cancelOrder(order)">취소</button>
       </b-col>
     </b-row>
   </b-container>
@@ -37,6 +37,10 @@ export default {
   },
   methods: {
     ...mapActions('order', ['fetchOrders']),
+    ...mapActions('refund', ['refund']),
+    cancelOrder(order) {
+      this.refund(order);
+    },
   },
 }
 </script>
